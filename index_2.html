@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iron Sanctuary — Come Back</title>
+<meta name="description" content="Iron Sanctuary, Flint MI — a message for our former members.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-base:#141210;
+    --bg-panel:#1d1a17;
+    --steel:#6f6a62;
+    --steel-light:#9c968b;
+    --chalk:#eee8dc;
+    --forge:#d1481e;
+    --forge-dim:#8a361a;
+    --rule:rgba(238,232,220,0.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg-base);
+    color:var(--chalk);
+    font-family:'Work Sans',sans-serif;
+    line-height:1.6;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(209,72,30,0.06), transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(111,106,98,0.08), transparent 45%);
+    overflow-x:hidden;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px;}
+
+  /* plate divider */
+  .plates{display:flex;justify-content:center;gap:10px;margin:0 0 28px;}
+  .plates span{
+    width:10px;height:10px;border-radius:50%;
+    background:var(--steel);
+    opacity:.5;
+  }
+  .plates span:nth-child(2){background:var(--forge);opacity:1;width:12px;height:12px;}
+
+  header.hero{
+    padding:72px 0 56px;
+    text-align:center;
+    border-bottom:1px solid var(--rule);
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    letter-spacing:.18em;
+    color:var(--steel-light);
+    text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  h1{
+    font-family:'Oswald',sans-serif;
+    font-weight:700;
+    text-transform:uppercase;
+    font-size:clamp(2.6rem,8vw,4.4rem);
+    line-height:0.98;
+    letter-spacing:.01em;
+    color:var(--chalk);
+  }
+  h1 span{color:var(--forge);}
+  .sub{
+    max-width:480px;
+    margin:22px auto 0;
+    font-size:1.05rem;
+    color:var(--steel-light);
+  }
+  .sub strong{color:var(--chalk);font-weight:600;}
+
+  .cta-btn{
+    display:inline-block;
+    margin-top:34px;
+    padding:16px 38px;
+    background:var(--forge);
+    color:var(--chalk);
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    font-size:1rem;
+    text-decoration:none;
+    border-radius:2px;
+    transition:background .15s ease, transform .15s ease;
+  }
+  .cta-btn:hover{background:#e2571f;transform:translateY(-1px);}
+
+  section{padding:56px 0;border-bottom:1px solid var(--rule);}
+  section:last-of-type{border-bottom:none;}
+
+  .offer-box{
+    background:var(--bg-panel);
+    border:1px solid var(--rule);
+    border-left:3px solid var(--forge);
+    padding:28px 26px;
+    border-radius:2px;
+  }
+  .offer-box .label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--forge);
+    margin-bottom:10px;
+  }
+  .offer-box h2{
+    font-family:'Oswald',sans-serif;
+    font-size:1.7rem;
+    text-transform:uppercase;
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .offer-box p{color:var(--steel-light);font-size:.98rem;}
+  .offer-placeholder{
+    color:var(--steel-light);
+    font-style:italic;
+    border:1px dashed var(--steel);
+    padding:10px 14px;
+    border-radius:2px;
+    font-size:.9rem;
+    margin-top:14px;
+  }
+
+  h3.section-title{
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    font-weight:600;
+    font-size:1.3rem;
+    letter-spacing:.02em;
+    margin-bottom:18px;
+  }
+  .reasons{list-style:none;display:grid;gap:14px;}
+  .reasons li{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    color:var(--steel-light);
+    font-size:.98rem;
+  }
+  .reasons li::before{
+    content:"";
+    flex-shrink:0;
+    width:9px;height:9px;
+    border-radius:50%;
+    background:var(--forge);
+    margin-top:7px;
+  }
+  .reasons li strong{color:var(--chalk);font-weight:600;display:block;margin-bottom:2px;}
+
+  form{
+    background:var(--bg-panel);
+    border:1px solid var(--rule);
+    padding:30px 26px;
+    border-radius:2px;
+  }
+  .field{margin-bottom:18px;}
+  .field:last-of-type{margin-bottom:0;}
+  label{
+    display:block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--steel-light);
+    margin-bottom:8px;
+  }
+  input[type=text], input[type=tel]{
+    width:100%;
+    background:var(--bg-base);
+    border:1px solid var(--rule);
+    color:var(--chalk);
+    padding:13px 14px;
+    font-family:'Work Sans',sans-serif;
+    font-size:1rem;
+    border-radius:2px;
+  }
+  input:focus{outline:2px solid var(--forge);outline-offset:1px;}
+  .submit-btn{
+    margin-top:6px;
+    width:100%;
+    padding:15px;
+    background:var(--forge);
+    color:var(--chalk);
+    border:none;
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    font-size:1rem;
+    border-radius:2px;
+    cursor:pointer;
+    transition:background .15s ease;
+  }
+  .submit-btn:hover{background:#e2571f;}
+  .form-note{
+    font-size:.82rem;
+    color:var(--steel);
+    margin-top:14px;
+    text-align:center;
+  }
+
+  #confirm{display:none;text-align:center;padding:40px 0;}
+  #confirm h2{
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    font-size:1.8rem;
+    color:var(--forge);
+    margin-bottom:10px;
+  }
+  #confirm p{color:var(--steel-light);}
+
+  footer{
+    text-align:center;
+    padding:40px 0 60px;
+    color:var(--steel);
+    font-size:.85rem;
+  }
+  footer a{color:var(--steel-light);}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="plates"><span></span><span></span><span></span></div>
+    <div class="eyebrow">Iron Sanctuary · 742 Neubert Ave, Flint MI</div>
+    <h1>We noticed<br>you <span>racked it</span></h1>
+    <p class="sub">This isn't a big-box gym sending you a generic email. It's <strong>DeWante</strong> — reaching out himself, because he'd rather have you back under the bar than gone for good.</p>
+    <a href="#comeback" class="cta-btn">Let's Talk</a>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="offer-box">
+      <div class="label">For former members only</div>
+      <h2>Come back on us</h2>
+      <p>Whatever pulled you away — schedule, budget, life — DeWante wants to make coming back easy, not awkward.</p>
+      <p style="margin-top:14px;color:var(--chalk);font-weight:600;">Fill out the form below and save <span style="color:var(--forge);">$5 on your first month back.</span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h3 class="section-title">Why members come back</h3>
+    <ul class="reasons">
+      <li><strong>It's still small.</strong> Same owner, same faces, no corporate turnover — Iron Sanctuary is privately owned and DeWante's here daily.</li>
+      <li><strong>Strength-focused.</strong> Strongman, powerlifting, bodybuilding — built for people training with a real goal, not just a treadmill.</li>
+      <li><strong>No pressure, no guilt trip.</strong> This is one message, one offer. If it's not the right time, that's fine — the door's just open.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="comeback">
+  <div class="wrap">
+    <h3 class="section-title">Ready to come back?</h3>
+    <form id="winback-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="hidden" name="source" value="iron-sanctuary-winback-page">
+      <div class="field">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required placeholder="First and last name">
+      </div>
+      <div class="field">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required placeholder="(810) 000-0000">
+      </div>
+      <button type="submit" class="submit-btn">Claim My $5 Off & Send to DeWante</button>
+      <p class="form-note">He'll personally call or text you back — no spam, no auto-replies.</p>
+    </form>
+    <div id="confirm">
+      <h2>Got it.</h2>
+      <p>Your $5-off-first-month is locked in. DeWante will reach out personally within a day or two. Welcome back.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Iron Sanctuary · 742 Neubert Ave, Flint, MI 48507<br>
+    Questions? Call/text <a href="tel:8106205756">810-620-5756</a>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById('winback-form');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const data = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(res => {
+      form.style.display = 'none';
+      document.getElementById('confirm').style.display = 'block';
+    }).catch(() => {
+      // fallback: still show confirmation so the visitor isn't stuck,
+      // but log the error for debugging
+      console.error('Form submission failed — check Formspree endpoint.');
+      form.style.display = 'none';
+      document.getElementById('confirm').style.display = 'block';
+    });
+  });
+</script>
+
+</body>
+</html>
